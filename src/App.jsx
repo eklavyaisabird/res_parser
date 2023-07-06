@@ -8,6 +8,8 @@ import { genBitmap } from "./resumeSearch";
 import SearchBar from "./components/SearchBar"
 import UploadFile from "./components/uploadFile"
 import KeyDisplay from "./components/keyDisplay"
+import ResDisplay from "./components/ResDisplay"
+
 
 
 
@@ -66,40 +68,41 @@ function App() {
     <div className="App">
       <h1 className="header">Resume Finder</h1>
 
-{/* keywords are a horizontal list object */}
+    {/* keywords are a horizontal list object */}
 
-{/* // keyword SearchBar
-    onSubmit: append keyword to keywords list
-    word has to be saved while typed
-*/}
-<SearchBar value={keyword} onSubmit={() => {
-  keywords.push({keyword});
-  console.log(keyword);
-  handleSumbission;
-}} onChange={(e) => setKeyword(e.target.value)}
-  />
-
-
-    <KeyDisplay keywords={keywords} heading="Keywords:"></KeyDisplay>
+    {/* // keyword SearchBar
+        onSubmit: append keyword to keywords list
+        word has to be saved while typed
+    */}
+    <SearchBar value={keyword} onSubmit={() => {
+      keywords.push({keyword});
+      console.log(keyword);
+      handleSumbission;
+      }} onChange={(e) => setKeyword(e.target.value)} />
 
 
-      <UploadFile onClick={uploadFile} onChange={(event) => {
-          setFileUpload(event.target.files[0]);
-        }}></UploadFile>
-
-        <p><button onClick={() => setNameDisplay(true)}>Show Resumes</button></p>
-
-        {nameList.map((name, index) => {
-         // console.log(name, index)
-          // return <p >{name + index}</p>
-          return (nameDisplay && <p><a href={fileList[index]}>{name}</a></p>);
-        })}
-
-        {nameDisplay && <p><button onClick={() => setNameDisplay(false)}>Hide</button></p>}
+        <KeyDisplay keywords={keywords} heading="Keywords:"></KeyDisplay>
 
 
-      
-    </div>
+          <UploadFile onClick={uploadFile} onChange={(event) => {
+              setFileUpload(event.target.files[0]);
+            }}></UploadFile>
+
+            {/* <p><button onClick={() => setNameDisplay(true)}>Show Resumes</button></p>
+
+            {nameList.map((name, index) => {
+            // console.log(name, index)
+              // return <p >{name + index}</p>
+              return (nameDisplay && <p><a href={fileList[index]}>{name}</a></p>);
+            })}
+
+            {nameDisplay && <p><button onClick={() => setNameDisplay(false)}>Hide</button></p>} */}
+
+            <ResDisplay nameDisplay={nameDisplay} nameList={nameList} fileList={fileList} onShow={() => setNameDisplay(true)} onHide={() => setNameDisplay(false)}></ResDisplay>
+
+
+          
+        </div>
   );
 
 
