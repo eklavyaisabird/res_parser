@@ -34,18 +34,6 @@ function App() {
     });
   };
 
-  // const uploadFile = () => {
-  //   if (fileUpload === null) return;
-  //   // const fileRef = ref(storage, `files/${fileUpload.name + v4()}`)
-  //   const fileRef = ref(storage, `files/${fileUpload.name}`)
-  //   uploadBytes(fileRef, fileUpload).then((snapshot) => {
-  //     //alert("File Uploaded")
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       setFileList((prev) => [...prev, url]);
-  //       setNameList((prev) => [...prev, item.name]);
-  //     });
-  //   });
-  // };
 
   useEffect(() => {
     listAll(fileListRef).then((response) => {
@@ -63,21 +51,6 @@ function App() {
       });
     });
   }, []);
-
-  // useEffect(() => {
-  //   listAll(fileListRef).then((response) => {
-  //     //console.log(response);
-  //     response.items.forEach((item) => {
-  //       getDownloadURL(item).then((url) => {
-  //         setFileList((prev) => [...prev, url]);
-
-  //         setNameList((prev) => [...prev, item.name]);
-  //       })
-  //     })
-  //   })
-  // }, []);
-
-
 
   // hardcoded keywords: 
   let keywords = ['python', 'react', 'data science', 'full-stack'];
@@ -98,7 +71,6 @@ function App() {
 {/* // keyword SearchBar
     onSubmit: append keyword to keywords list
     word has to be saved while typed
-
 */}
 <SearchBar value={keyword} onSubmit={() => {
   keywords.push({keyword});
@@ -107,30 +79,13 @@ function App() {
 }} onChange={(e) => setKeyword(e.target.value)}
   />
 
-{/* <p>Keywords:</p>
-<div className="btn-group" role="group" aria-label="Basic example">
-  {keywords.map((item) => (
-    <button type="button" className="btn btn-primary button-space1">{item}</button>
-  ))}
-</div> */}
 
     <KeyDisplay keywords={keywords} heading="Keywords:"></KeyDisplay>
 
-      {/* <input
-        type="file"
-        onChange={(event) => {
-          setFileUpload(event.target.files[0]);
-        }}
-      />
-      <button onClick={uploadFile}>Upload File</button> */}
 
       <UploadFile onClick={uploadFile} onChange={(event) => {
           setFileUpload(event.target.files[0]);
         }}></UploadFile>
-
-        {/* {fileList.map((url) => {
-          return <img src={url} />
-        })} */}
 
         <p><button onClick={() => setNameDisplay(true)}>Show Resumes</button></p>
 
@@ -150,16 +105,5 @@ function App() {
 
 }
 
-/**node -v
- * 
- * {nameList.map((name, index) => {
-          console.log(name, index)
-          // return <p >{name + index}</p>
-          return <div><a href={fileList[index]}>{name}</a><p /><div/>
-        })}
-        }
- */
-
-        // export {nameList, fileList};
 
 export default App;
