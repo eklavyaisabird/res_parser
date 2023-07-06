@@ -6,6 +6,10 @@ import {ref, uploadBytes, listAll, getDownloadURL, list} from "firebase/storage"
 import { v4 } from "uuid"
 import { genBitmap } from "./resumeSearch";
 import SearchBar from "./components/SearchBar"
+import UploadFile from "./components/uploadFile"
+import KeyDisplay from "./components/keyDisplay"
+
+
 
 function App() {
   
@@ -101,22 +105,28 @@ function App() {
   console.log(keyword);
   handleSumbission;
 }} onChange={(e) => setKeyword(e.target.value)}
-  >Keywords</SearchBar>
+  />
 
-<p>Keywords:</p>
+{/* <p>Keywords:</p>
 <div className="btn-group" role="group" aria-label="Basic example">
   {keywords.map((item) => (
     <button type="button" className="btn btn-primary button-space1">{item}</button>
   ))}
-  
-</div>
-      <input
+</div> */}
+
+    <KeyDisplay keywords={keywords} heading="Keywords:"></KeyDisplay>
+
+      {/* <input
         type="file"
         onChange={(event) => {
           setFileUpload(event.target.files[0]);
         }}
       />
-      <button onClick={uploadFile}>Upload File</button>
+      <button onClick={uploadFile}>Upload File</button> */}
+
+      <UploadFile onClick={uploadFile} onChange={(event) => {
+          setFileUpload(event.target.files[0]);
+        }}></UploadFile>
 
         {/* {fileList.map((url) => {
           return <img src={url} />
