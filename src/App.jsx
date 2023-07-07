@@ -5,10 +5,10 @@ import {storage} from "./firebase";
 import {ref, uploadBytes, listAll, getDownloadURL, list} from "firebase/storage";
 import { v4 } from "uuid"
 import { genBitmap } from "./resumeSearch";
-import SearchBar from "./components/SearchBar"
+import SearchBar from "./components/searchBar"
 import UploadFile from "./components/uploadFile"
 import KeyDisplay from "./components/keyDisplay"
-import ResDisplay from "./components/ResDisplay"
+import ResDisplay from "./components/resDisplay"
 
 
 
