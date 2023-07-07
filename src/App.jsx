@@ -1,21 +1,12 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import {storage, db} from "./firebase";
+import {storage} from "./firebase";
 import {ref, uploadBytes, listAll, getDownloadURL, list} from "firebase/storage";
-import { v4 } from "uuid"
-// import { genBitmap } from "./resumeSearch";
 import SearchBar from "./components/searchBar"
 import UploadFile from "./components/uploadFile"
 import KeyDisplay from "./components/keyDisplay"
 import ResDisplay from "./components/resDisplay"
-import {checkPDF} from "./pdfjstest.js";
-
-// import pkg from '../node_modules/pdfjs-dist/build/pdf.js';
-// const { getDocument } = pkg;
-// import {getDocument} from '../node_modules/pdfjs-dist/build/pdf';
-
-// import {getDocument} from 'pdfjs-dist';
+import { wordInPDF } from "./pdfjstest.js";
 
 function App() {
   
@@ -36,6 +27,7 @@ function App() {
       getDownloadURL(snapshot.ref).then((url) => {
         setFileList((prevFileList) => [...prevFileList, url]);
         setNameList((prevNameList) => [...prevNameList, fileUpload.name]);
+        console.log("file uploaded");
       });
     });
   };
@@ -64,10 +56,6 @@ function App() {
     });
   }, []);
 
-  // hardcoded keywords: 
-  // let keyword = 'react';
-
-  // console.log(genBitmap(keywords, fileList));
   const [keyword, setKeyword] = useState("");
   const [submittedWord, setSubmittedWord] = useState("");
 
@@ -79,12 +67,6 @@ function App() {
     <div className="App">
       <h1 className="header">Resume Finder</h1>
 
-    {/* keywords are a horizontal list object */}
-
-    {/* // keyword SearchBar
-        onSubmit: append keyword to keywords list
-        word has to be saved while typed
-    */}
     <SearchBar value={keyword} onSubmit={(e) => {
       // keywords.push({keyword});
       setSubmittedWord(keyword)
@@ -99,16 +81,6 @@ function App() {
           <UploadFile onClick={uploadFile} onChange={(event) => {
               setFileUpload(event.target.files[0]);
             }}></UploadFile>
-
-            {/* <p><button onClick={() => setNameDisplay(true)}>Show Resumes</button></p>
-
-            {nameList.map((name, index) => {
-            // console.log(name, index)
-              // return <p >{name + index}</p>
-              return (nameDisplay && <p><a href={fileList[index]}>{name}</a></p>);
-            })}
-
-            {nameDisplay && <p><button onClick={() => setNameDisplay(false)}>Hide</button></p>} */}
 
             <ResDisplay nameDisplay={nameDisplay} nameList={nameList} fileList={fileList} onShow={() => setNameDisplay(true)} onHide={() => setNameDisplay(false)}></ResDisplay>
 

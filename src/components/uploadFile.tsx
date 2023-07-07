@@ -2,14 +2,14 @@ import React, { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  onUpload: () => void;
+  onChange: () => void;
   onClick: () => void;
 }
 
-const UploadFile = ({ children, onUpload, onClick }: Props) => {
+const UploadFile = ({ children, onChange, onClick }: Props) => {
   return (
     <>
-      <input type="file" onChange={onUpload} />
+      <input type="file" onChange={onChange} />
       <button onClick={onClick}>Upload File</button>
     </>
   );
