@@ -9,8 +9,9 @@
 // import pkg from 'pdfjs-dist/build/pdf.js';
 // const { getDocument } = pkg;
 
-import { getDocument } from 'pdfjs-dist/build/pdf.js';
+// import { getDocument } from 'pdfjs-dist/build/pdf.js';
 
+import { getDocument } from 'pdfjs-dist';
 
 // import { GlobalWorkerOptions } from "pdfjs-dist/webpack";
 

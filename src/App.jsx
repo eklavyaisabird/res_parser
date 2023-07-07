@@ -4,14 +4,18 @@ import "./App.css";
 import {storage, db} from "./firebase";
 import {ref, uploadBytes, listAll, getDownloadURL, list} from "firebase/storage";
 import { v4 } from "uuid"
-import { genBitmap } from "./resumeSearch";
+// import { genBitmap } from "./resumeSearch";
 import SearchBar from "./components/searchBar"
 import UploadFile from "./components/uploadFile"
 import KeyDisplay from "./components/keyDisplay"
 import ResDisplay from "./components/resDisplay"
+import {checkPDF} from "./pdfjstest.js";
 
+// import pkg from '../node_modules/pdfjs-dist/build/pdf.js';
+// const { getDocument } = pkg;
+// import {getDocument} from '../node_modules/pdfjs-dist/build/pdf';
 
-
+// import {getDocument} from 'pdfjs-dist';
 
 function App() {
   
@@ -36,11 +40,11 @@ function App() {
     });
   };
 
-  const [nameUpload, setNameUpload] = useState(null);
+  // const [nameUpload, setNameUpload] = useState(null);
 
-  const uploadWord = () => {
+  // const uploadWord = () => {
 
-  }
+  // }
 
 
   useEffect(() => {
@@ -94,7 +98,6 @@ function App() {
 
           <UploadFile onClick={uploadFile} onChange={(event) => {
               setFileUpload(event.target.files[0]);
-              
             }}></UploadFile>
 
             {/* <p><button onClick={() => setNameDisplay(true)}>Show Resumes</button></p>
