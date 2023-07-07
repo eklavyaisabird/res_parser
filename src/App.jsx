@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import {storage} from "./firebase";
+import {storage, db} from "./firebase";
 import {ref, uploadBytes, listAll, getDownloadURL, list} from "firebase/storage";
 import { v4 } from "uuid"
 import { genBitmap } from "./resumeSearch";
@@ -36,6 +36,12 @@ function App() {
     });
   };
 
+  const [nameUpload, setNameUpload] = useState(null);
+
+  const uploadWord = () => {
+
+  }
+
 
   useEffect(() => {
     listAll(fileListRef).then((response) => {
@@ -55,10 +61,11 @@ function App() {
   }, []);
 
   // hardcoded keywords: 
-  let keywords = ['python', 'react', 'data science', 'full-stack'];
+  // let keyword = 'react';
 
-  console.log(genBitmap(keywords, fileList));
+  // console.log(genBitmap(keywords, fileList));
   const [keyword, setKeyword] = useState("");
+  const [submittedWord, setSubmittedWord] = useState("");
 
   const handleSumbission = (item) => {
     console.log(item)
@@ -74,18 +81,20 @@ function App() {
         onSubmit: append keyword to keywords list
         word has to be saved while typed
     */}
-    <SearchBar value={keyword} onSubmit={() => {
-      keywords.push({keyword});
+    <SearchBar value={keyword} onSubmit={(e) => {
+      // keywords.push({keyword});
+      setSubmittedWord(keyword)
       console.log(keyword);
       handleSumbission;
+      e.preventDefault();
       }} onChange={(e) => setKeyword(e.target.value)} />
 
 
-        <KeyDisplay keywords={keywords} heading="Keywords:"></KeyDisplay>
-
+        <KeyDisplay keyword={submittedWord} heading="Keyword:"></KeyDisplay>
 
           <UploadFile onClick={uploadFile} onChange={(event) => {
               setFileUpload(event.target.files[0]);
+              
             }}></UploadFile>
 
             {/* <p><button onClick={() => setNameDisplay(true)}>Show Resumes</button></p>
