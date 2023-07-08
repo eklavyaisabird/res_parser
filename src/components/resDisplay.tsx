@@ -27,7 +27,7 @@ const ResDisplay = ({
       {nameList.map((name, index) => {
         return (
           nameDisplay && (
-            <p>
+            <p key={index}>
               <a href={fileList[index]}>{name}</a>
             </p>
           )
