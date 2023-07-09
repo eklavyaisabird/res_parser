@@ -55,6 +55,7 @@ function App() {
 
   const handleSumbission = (item) => {
     console.log("submission handled: ", item)
+    setFilteredFiles(["HANDLED"]);
   }
 
   const [filteredFiles, setFilteredFiles] = useState([]);
@@ -62,102 +63,18 @@ function App() {
 
   const [bitmap, setBitmap] = useState([]);
 
-  // useEffect(() => {
-  //   createfilteredlists(keyword, fileList);
-  // }, [keyword, fileList, nameList]);
-
-//   async function createfilteredlists(keyword, fileList) {
-//     console.log("GABAGOOL");
-//     console.log("A fileList: ", fileList);
-//     console.log("A keyword: ", keyword);
-
-//     // set filtered lists based on bitmap
-//     genBitmap(keyword, fileList).then((bitArray) => {
-//     console.log("WHAT IS GOING ON");
-
-//     console.log("B fileList: ", fileList);
-//     console.log("B BITMAP: ", bitArray);
-    
-//     const newFilteredFiles = fileList.filter((_, i) => bitArray[i]);
-//     const newFilteredNames = nameList.filter((_, i) => bitArray[i]);
-
-//     setFilteredFiles(newFilteredFiles);
-//     setFilteredNames(newFilteredNames);
-//   })
-//   .catch((error) => {
-//     console.error("Error occurred:", error);
-//   });
-// }
-
-  // async function createfilteredlists(keyword, fileList) {
-  //   console.log("GABAGOOL");
-  //   console.log("A fileList: ", fileList);
-  //   console.log("A keyword: ", keyword);
-
-  //   // set filtered lists based on bitmap
-  //   const bitArray = await genBitmap(keyword, fileList);
-  //   console.log("WHAT IS GOING ON");
-
-  //   console.log("B fileList: ", fileList);
-  //   console.log("B BITMAP: ", bitArray);
-    
-  //   const newFilteredFiles = fileList.filter((_, i) => bitArray[i]);
-  //   const newFilteredNames = nameList.filter((_, i) => bitArray[i]);
-
-  //   setFilteredFiles(newFilteredFiles);
-  //   setFilteredNames(newFilteredNames);
-  // }
-
-  // const filteredFiles = [];
-  // const filteredNames = [];
-
-  // // const [filteredFiles, setFilteredFiles] = useState([]);
-  // // const [filteredNames, setFilteredNames] = useState([]);
-
-  // async function createfilteredlists() {
-  //   // set filtered lists based on bitmap
-  //   const bitArray = await genBitmap(keyword, fileList);
-  //   console.log("fileList: ", fileList)
-  //   console.log("bitarray: ", bitArray)
-  //   for (let i = 0, len = bitArray.length; i < len; i++) {
-  //     if (bitArray[i] ){
-  //     filteredFiles.push(fileList[i]);
-  //     filteredNames.push(nameList[i]);
-  //   }
-  //   }
-  //   console.log("Alrighty then")
-  //   console.log(filteredFiles)
-  // }
-
-  // useEffect(() => {
-  //   if (fileUpload) {
-  //     createfilteredlists();
-  //   }
-  // }, [fileUpload]);
-
-// // unexpected await error
-//   const bitArray = genBitmap(keyword, fileList);
-  // filtered lists are appended to based on bitmap
-    // for (let i = 0, len = bitArray.length; i < len; i++) {
-    //   filteredFiles.push(bitArray[i] && fileList);
-    //   filteredNames.push(bitArray[i] && nameList);
-    // }
-
-    // async function FileSet(keyword, fileList) {
-    //   console.log("setting files...")
-    //   setFilteredFiles(await filterURLs(keyword, fileList));
-    //   console.log("done setting files")
-    // }
-
     async function FileSet(keyword, fileList) {
       console.log("setting files...")
       filterURLs(keyword, fileList).then(
-        setFilteredFiles(["something?"])
+        (filty) =>
+        {
+        console.log("FILTY = ", filty)
+        }
       )
       console.log("done setting files")
-      console.log("filtered: ", filteredFiles)
-      setFilteredFiles(["something?"])
-      console.log("filtered2: ", filteredFiles)
+      console.log("fileset filtered: ", filteredFiles)
+      // setFilteredFiles(["something2222?"])
+      console.log("fileset filtered2: ", filteredFiles)
       
     }
 
@@ -184,8 +101,12 @@ function App() {
       NameSet(keyword, fileList, nameList);
 
       console.log("--", keyword);
-      handleSumbission(keyword);
+      // handleSumbission(keyword);
       e.preventDefault();
+      // setFilteredFiles(["AAAAAA"]);
+      // filterURLs(keyword, fileList).then(
+      //   (filty) => {setFilteredFiles(filty)}
+      // )
       console.log("--fileList: ", fileList);
       console.log("--filteredList: ", filteredFiles);
       console.log("--filteredNAMES: ", filteredNames);
