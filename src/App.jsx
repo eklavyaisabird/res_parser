@@ -65,6 +65,7 @@ function App() {
 
     async function FileSet(keyword, fileList) {
       console.log("setting files...")
+      console.log("fileList: ", fileList);
       filterURLs(keyword, fileList).then(
         (filty) =>
         {
@@ -73,8 +74,6 @@ function App() {
       )
       console.log("done setting files")
       console.log("fileset filtered: ", filteredFiles)
-      // setFilteredFiles(["something2222?"])
-      console.log("fileset filtered2: ", filteredFiles)
       
     }
 
@@ -94,8 +93,8 @@ function App() {
       setSubmittedWord(keyword)
       // createfilteredlists(keyword, fileList);
 
-      // setFilteredFiles(async () => {await filterURLs(keyword, fileList)})
-      // setFilteredNames(async () => {await filterNAMEs(keyword, fileList, nameList)})
+      // setFilteredFiles((async () => {await filterURLs(keyword, fileList)})())
+      // setFilteredNames((async () => {await filterNAMEs(keyword, fileList, nameList)})())
 
       FileSet(keyword, fileList);
       NameSet(keyword, fileList, nameList);

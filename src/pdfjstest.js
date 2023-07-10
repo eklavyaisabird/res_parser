@@ -3,7 +3,7 @@
 // import pkg from 'pdfjs-dist/build/pdf.js';
 // const { getDocument } = pkg;
 
-// vvv for running code in terminal
+// // vvv for running code in terminal
 // import pkg from 'pdfjs-dist';
 // const { getDocument, GlobalWorkerOptions } = pkg;
 
@@ -19,7 +19,7 @@
 export async function getContent(src) {
     console.log("GETTING CONTENT")
     const doc = await getDocument(src).promise;
-    console.log("GETDOCUMENT")
+    console.log("doc")
     const page = await doc.getPage(1);
     console.log("GETPAGE")
 
@@ -87,7 +87,7 @@ export async function filterURLs(word, urlArray) {
       newFileArr.push(urlArray[i]);
     }
   }
-  console.log("Filtered URLs:", newFileArr); // Log the filtered URLs
+  // console.log("Filtered URLs:", newFileArr); // Log the filtered URLs
 
   return newFileArr
 }
@@ -102,19 +102,19 @@ export async function filterNAMEs(word, urlArray, nameArray) {
   return newNameArr
 }
 
-const reslist = ["/Users/eklavyamishra/Desktop/Resumes/Resume_JohnSmith.pdf", "/Users/eklavyamishra/Desktop/Resumes/Resume_AlexanderHamilton.pdf", "/Users/eklavyamishra/Desktop/Resumes/resume (3).pdf"];
-const fileList = reslist;
-const keyword = "Python";
+// const reslist = ["/Users/eklavyamishra/Desktop/Resumes/Resume_JohnSmith.pdf", "/Users/eklavyamishra/Desktop/Resumes/Resume_AlexanderHamilton.pdf", "/Users/eklavyamishra/Desktop/Resumes/resume (3).pdf"];
+// const fileList = reslist;
+// const keyword = "Python";
 
-(async () => {
-  const filteredList = await filterURLs(keyword, fileList);
-  console.log("Old Arr:", fileList);
-  console.log("New Arr:", filteredList);
+// (async () => {
+//   const filteredList = await filterURLs(keyword, fileList);
+//   console.log("Old Arr:", fileList);
+//   console.log("New Arr:", filteredList);
 
-  // for (let i = 0, len = reslist.length; i < len; i++) {
-  //   console.log(await checkPDF("", reslist[i]))
-  // }
-  })();
+//   // for (let i = 0, len = reslist.length; i < len; i++) {
+//   //   console.log(await checkPDF("", reslist[i]))
+//   // }
+//   })();
 
 //const pdflink = "https://firebasestorage.googleapis.com/v0/b/project1js-16740.appspot.com/o/files%2FPHD_EklavyaMishra.pdf?alt=media&token=59cef17d-1c8b-463a-a125-4e39ebc5d13e";
 // const reslist = ["/Users/eklavyamishra/Desktop/Resumes/Resume_JohnSmith.pdf", "/Users/eklavyamishra/Desktop/Resumes/Resume_AlexanderHamilton.pdf", "/Users/eklavyamishra/Desktop/Resumes/resume (3).pdf"];
