@@ -32,7 +32,6 @@ function App() {
       });
     });
   };
-// could potentially implement filtration here in the useeffect
   useEffect(() => {
     listAll(fileListRef).then((response) => {
       const urls = [];
@@ -53,35 +52,24 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [submittedWord, setSubmittedWord] = useState("");
 
-  const handleSumbission = (item) => {
-    console.log("submission handled: ", item)
-    setFilteredFiles(["HANDLED"]);
-  }
+  // const [filteredFiles, setFilteredFiles] = useState([]);
+  // const [filteredNames, setFilteredNames] = useState([]);
 
-  const [filteredFiles, setFilteredFiles] = useState([]);
-  const [filteredNames, setFilteredNames] = useState([]);
-
-  const [bitmap, setBitmap] = useState([]);
-
-    async function FileSet(keyword, fileList) {
-      console.log("setting files...")
-      console.log("fileList: ", fileList);
-      filterURLs(keyword, fileList).then(
-        (filty) =>
-        {
-        console.log("FILTY = ", filty)
-        }
-      )
-      console.log("done setting files")
-      console.log("fileset filtered: ", filteredFiles)
+    // async function FileSet(keyword, fileList) {
+    //   console.log("setting files...")
+    //   console.log("fileList: ", fileList);
+    //   filterURLs(keyword, fileList).then(
+    //     (filty) =>
+    //     {
+    //     console.log("FILTY = ", filty)
+    //     }
+    //   )
       
-    }
+    // }
 
-    async function NameSet(keyword, fileList, nameList) {
-      console.log("setting names...")
-      setFilteredNames(await filterNAMEs(keyword, fileList, nameList));
-      console.log("done setting files")
-    }
+    // async function NameSet(keyword, fileList, nameList) {
+    //   setFilteredNames(await filterNAMEs(keyword, fileList, nameList));
+    // }
 
   
   return (
@@ -89,26 +77,12 @@ function App() {
       <h1 className="header">Resume Finder</h1>
 
     <SearchBar value={keyword} onSubmit={(e) => {
-      // keywords.push({keyword});
       setSubmittedWord(keyword)
-      // createfilteredlists(keyword, fileList);
+      // FileSet(keyword, fileList);
+      // NameSet(keyword, fileList, nameList);
 
-      // setFilteredFiles((async () => {await filterURLs(keyword, fileList)})())
-      // setFilteredNames((async () => {await filterNAMEs(keyword, fileList, nameList)})())
-
-      FileSet(keyword, fileList);
-      NameSet(keyword, fileList, nameList);
-
-      console.log("--", keyword);
-      // handleSumbission(keyword);
       e.preventDefault();
-      // setFilteredFiles(["AAAAAA"]);
-      // filterURLs(keyword, fileList).then(
-      //   (filty) => {setFilteredFiles(filty)}
-      // )
-      console.log("--fileList: ", fileList);
-      console.log("--filteredList: ", filteredFiles);
-      console.log("--filteredNAMES: ", filteredNames);
+
 }} onChange={(e) => setKeyword(e.target.value)} />
 
 
@@ -118,8 +92,8 @@ function App() {
               setFileUpload(event.target.files[0]);
             }}></UploadFile>
 
-            <ResDisplay nameDisplay={nameDisplay} nameList={filteredNames} fileList={filteredFiles} onShow={() => setNameDisplay(true)} onHide={() => setNameDisplay(false)}></ResDisplay>
-            {/* <ResDisplay nameDisplay={nameDisplay} nameList={nameList} fileList={fileList} onShow={() => setNameDisplay(true)} onHide={() => setNameDisplay(false)}></ResDisplay> */}
+            {/* <ResDisplay nameDisplay={nameDisplay} nameList={filteredNames} fileList={filteredFiles} onShow={() => setNameDisplay(true)} onHide={() => setNameDisplay(false)}></ResDisplay> */}
+            <ResDisplay nameDisplay={nameDisplay} nameList={nameList} fileList={fileList} onShow={() => setNameDisplay(true)} onHide={() => setNameDisplay(false)}></ResDisplay>
           
         </div>
   );

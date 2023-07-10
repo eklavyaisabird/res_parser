@@ -1,9 +1,9 @@
-// // vvv for running code in terminal
-// import pkg from 'pdfjs-dist';
-// const { getDocument, GlobalWorkerOptions } = pkg;
+// vvv for running code in terminal
+import pkg from 'pdfjs-dist';
+const { getDocument, GlobalWorkerOptions } = pkg;
 
 // vvv for running app in browser
- import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
+//  import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
 
  GlobalWorkerOptions.workerSrc = './pdf.worker.js';
 
@@ -20,10 +20,9 @@ export async function getContent(src) {
 
 
 export async function checkPDF(word, src) {
-  console.log("Checking PDF....")
+  // console.log("Checking PDF....")
     const text = await getContent(src);
     const inPDF = text.includes(word);
-    console.log("DONE Checking PDF....", inPDF);
     return inPDF;
 }
 

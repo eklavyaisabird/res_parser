@@ -4,7 +4,7 @@ async function FileSet(keyword, fileList) {
     filterURLs(keyword, fileList).then(
       (filteredListofURLS) =>
       {
-      console.log("filteredList = ", filteredListofURLS)
+    //   console.log("filteredList = ", filteredListofURLS)
       }
     )
     // console.log("fileset filtered: ", filty)    
@@ -16,7 +16,7 @@ const keyword = "Python";
 
 (async () => {
   const filteredList = await filterURLs(keyword, fileList);
-  FileSet(keyword, fileList);
+//   FileSet(keyword, fileList);
   console.log("Old Arr:", fileList);
   console.log("New Arr:", filteredList);
   })();
