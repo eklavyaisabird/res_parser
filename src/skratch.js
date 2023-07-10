@@ -1,14 +1,12 @@
 import { filterURLs } from "./pdfjstest.js";
 
 async function FileSet(keyword, fileList) {
-    console.log("setting files...")
     filterURLs(keyword, fileList).then(
-      (filty) =>
+      (filteredListofURLS) =>
       {
-      console.log("FILTY = ", filty)
+      console.log("filteredList = ", filteredListofURLS)
       }
     )
-    console.log("done setting files")
     // console.log("fileset filtered: ", filty)    
   }
 
